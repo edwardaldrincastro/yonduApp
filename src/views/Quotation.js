@@ -10,10 +10,15 @@ class Quotation extends Component {
         this.state = {
         };
     }
-    handleSubmit = values => {
+    handleSubmit = (values, formikBag) => {
         alert(JSON.stringify(values))
         console.log(values)
-        // this.props.navigation.navigate(route)
+        console.log(formikBag)
+    }
+    checker = values => {
+        alert(JSON.stringify(values))
+        console.log(values)
+        // return this.props.navigation.navigate('ThankYou')
     }
     // handleData = (values) => {
     //     await this.getData(values)
@@ -25,41 +30,60 @@ class Quotation extends Component {
     handleRoute = (route) => {
         this.props.navigation.navigate(route)
     }
+    static navigationOptions = {
+       title: 'Get a Quote'
+    }
     render() {
         return (
             <Formik
                 // initialValues={{myName: '', email: '', password: '' }}
-                initialValues={{ name: '', company: '', phoneNumber: '', email: '', message: '' }}
-                onSubmit={this.getData}
-                onReset={this.handleReset}
-                validationSchema={Yup.object().shape({
-                    name: Yup.string()
-                        .required('Required name'),
-                    company: Yup.string()
-                        .required('Required company'),
-                    phoneNumber: Yup.string()
-                        .required('Required phoneNumber'),
-                    email: Yup.string()
-                        .required('Required email'),
-                    message: Yup.string()
-                        .required('Required message'),
-                })}>
+                initialValues={{ myName: ''
+                // ,company: '', phoneNumber: '', email: '', message: ''
+             }}
+                onSubmit={this.handleSubmit}
+                // onReset={this.handleReset}
+                // validationSchema={Yup.object().shape({
+                    // name: Yup.string()
+                        // .required('Required name'),
+                    // company: Yup.string()
+                    //     .required('Required company'),
+                    // phoneNumber: Yup.string()
+                    //     .required('Required phoneNumber'),
+                    // email: Yup.string()
+                    //     .required('Required email'),
+                    // message: Yup.string()
+                    //     .required('Required message'),
+                // })}
+            >
 
-                {({ values, handleSubmit, handleChange, handleReset, errors, touched, setFieldValue, resetForm, setValues, reset, FormikBag, isSubmitting }) => (
+                {({ values, handleSubmit, handleChange, errors, touched, FormikBag }) => (
 
                     <View style={styles.container}>
                         <View style={styles.content}>
-                            <PickerCustom />
-                            <PickerCustom />
-                            <TextInputCustom name='name' placeholder='Name' error={touched.name && errors.name} />
+                            {/* <PickerCustom />
+                            <PickerCustom /> */}
+                            <TextInputCustom name='myName' 
+                            placeholder='Name'
+                            onChangeText={handleChange('myName')}
+                            value={values.myName}
+                            error={touched.myName && errors.myName}
+                            />
+                            {/* <TextInputCustom name='company' placeholder='Company'/>
+                            <TextInputCustom name='email' placeholder='Email'/>
+                            <TextInputCustom name='phoneNumber' placeholder='Phone Number'/>
+                            <TextInputCustom name='message' placeholder='Message'/> */}
+                        
+                            {/* <TextInputCustom name='name' placeholder='Name' error={touched.name && errors.name} />
                             <TextInputCustom name='company' placeholder='Company' error={touched.company && errors.company} />
                             <TextInputCustom name='email' placeholder='Email' error={touched.email && errors.email} />
                             <TextInputCustom name='phoneNumber' placeholder='Phone Number' error={touched.phoneNumber && errors.phoneNumber} />
-                            <TextInputCustom name='message' placeholder='Message' error={touched.message && errors.message} />
+                            <TextInputCustom name='message' placeholder='Message' error={touched.message && errors.message} /> */}
                         </View>
                         <View style={styles.buttonContainer}>
                             {/* <ButtonCustom text={'Submit'} onPress={handleSubmit} route={'ThankYou'} /> */}
                             <Button title='Check' onPress={handleSubmit}/>
+                            <Button title='Value' onPress={() => alert(JSON.stringify(values))}/>
+                            {/* <Button title='Checker' onPress={() => this.checker()}/> */}
                         </View>
                         {/* navigation={this.props.navigation} */}
                     </View>

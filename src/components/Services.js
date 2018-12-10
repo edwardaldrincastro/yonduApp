@@ -4,9 +4,15 @@ import { main_components, company_name, custom_style } from "../utilities/data/m
 import { services } from "../utilities/data/data"
 import { Apps, Desktop, Filing, People, Ribbon, Unlock } from "../utilities/icons";
 
-const localServices = services[0]
+// const localServices = services[0]
 
 class Services extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            localServices: services[0]
+        }
+    }
     // getObject = (route) => {
     //     const routeArray = localServices[route]
     //     const routeKeys = Object.keys(localServices[route]) //array
@@ -14,7 +20,7 @@ class Services extends Component {
     // }
     routeHandler = (route) => {
         let newRouteString = route.replace(/[^A-Z0-9]+/ig, '')
-        return localServices[newRouteString] 
+        return this.state.localServices[newRouteString] 
 
     }
     iconHandler = (icon) => {
@@ -38,7 +44,7 @@ class Services extends Component {
         const route = this.props.route
         const routeID = this.props.routeID
         console.log('route name', route);
-        console.log('local', localServices)
+        console.log('local', this.state.localServices)
         const routeArray = this.routeHandler(route)
 
         // console.log('localRoute', localServices[newRoute])

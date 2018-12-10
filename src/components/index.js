@@ -5,7 +5,10 @@ import Services from "./Services"
 import ButtonCustom from "./ButtonCustom"
 // import CustomDrawer from "./CustomDrawer";
 import TextInputCustom from "./TextInputCustom"
-import PickerCustom from "./PickerCustom";
+import PickerCustom from "./PickerCustom"
+import HeaderCustom from "./HeaderCustom"
+import InsightsStack from "./InsightsStack"
+import IndustriesStack from "./IndustriesStack"
 
 export {
     DrawerNavigator,
@@ -14,6 +17,9 @@ export {
     Services,
     ButtonCustom,
     TextInputCustom,
-    PickerCustom
+    PickerCustom,
+    HeaderCustom,
+    InsightsStack,
+    IndustriesStack
     // CustomDrawer
 }

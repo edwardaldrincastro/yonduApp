@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, BackHandler } from 'react-native'
-import { main_components, company_name, custom_style, services } from "../utilities/data/main_components"
-import { Services } from "../components";
+import { StyleSheet, Text, View, TouchableHighlight, BackHandler, Image } from 'react-native'
+import { services } from "../utilities/data/data"
+import { Services, HeaderCustom } from "../components"
 
 class Industries extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            localServices: services[0]
+        }
+    }
     handleBackPress = () => {
         this.props.navigation.navigate('Home')
         return true
+    }
+    routeHandler = (route) => {
+        let newRouteString = route.replace(/[^A-Z0-9]+/ig, '')
+        return this.state.localServices[newRouteString] 
+
     }
     componentDidMount() {
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress)
@@ -16,16 +27,29 @@ class Industries extends Component {
         BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress)
     }
     static navigationOptions = {
-        drawerLabel: 'Industries',
+        title: 'Industries',
     }
     render() {
-        const route = this.props.navigation.getParam('name', 'No name')
-        const routeID = this.props.navigation.getParam('id', 'No ID')
-        console.log(services);
+        const route = this.props.navigation.state.routeName
+        const routeArray = this.routeHandler(route)
         return (
-            <View>
-                <Services route={route} routeID={routeID}/>
-                {/* <Text></Text> */}
+            <View style={styles.container}>
+                {/* <HeaderCustom /> */}
+                <View style={{ flex: 1 }}>
+                    <Text>Lorem Ipsum dolor sir amet</Text>
+                    <Text>Quisque a est vel tortor lobortis scelerisque vitae id risus.</Text>
+                </View>
+                <View style={{ flexWrap: 'wrap', flex: 6, flexDirection: 'row' }}>
+                {routeArray.map((industries, index) => (
+                    <View key={index} style={{ width:'50%', height: 150, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff', borderWidth: 1, borderColor: '#E97D40' }}>
+                        <Image 
+                        resizeMode='contain'
+                        style={{height: 100, width: 100}}
+                        source={industries.image}/>
+                        <Text>{industries.name}</Text>
+                    </View>
+                ))}
+                </View>
             </View>
         )
     }
@@ -34,9 +58,9 @@ class Industries extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        backgroundColor: '#D8D8D8',
+        // justifyContent: 'space-around',
+        // alignItems: 'center',
+        backgroundColor: '#fff',
         // padding: 20
     },
     featureText: {

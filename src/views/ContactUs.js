@@ -23,9 +23,8 @@ class ContactUs extends Component {
         const routeID = this.props.navigation.getParam('id', 'No ID')
         console.log(services);
         return (
-            <View>
-                <Services route={route} routeID={routeID}/>
-                {/* <Text></Text> */}
+            <View style={styles.container}>
+                <Text>About</Text>
             </View>
         )
     }

@@ -2,6 +2,7 @@ import Home from "./Home"
 import Logo from "./Logo"
 import Quotation from "./Quotation";
 import ThankYou from "./ThankYou";
+import SelectedInsights from "./SelectedInsights";
 
 import About from "./About"
 import Careers from "./Careers"
@@ -20,5 +21,6 @@ export {
     ContactUs,
     Industries,
     Insights,
-    WhatWeDo
+    WhatWeDo,
+    SelectedInsights
 }

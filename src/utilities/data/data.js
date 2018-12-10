@@ -66,51 +66,101 @@ export const services = [
                 {
                     id: 1,
                     name: 'ICT',
-                    image: 'https://cdn0.iconfinder.com/data/icons/basic-outline/64/icon-basic-set_12-camera-512.png'
+                    image: require('YonduApp/src/assets/images/ict.png')
                 },
                 {
                     id: 2,
                     name: 'BPO',
-                    image: 'https://cdn0.iconfinder.com/data/icons/basic-outline/64/icon-basic-set_12-camera-512.png'
+                    image: require('YonduApp/src/assets/images/bpo.png')
                 },
                 {
                     id: 3,
                     name: 'Banking and Finance',
-                    image: 'https://cdn0.iconfinder.com/data/icons/basic-outline/64/icon-basic-set_12-camera-512.png'
+                    image: require('YonduApp/src/assets/images/banking_finance.png')
                 },
                 {
                     id: 4,
                     name: 'Real Estate',
-                    image: 'https://cdn0.iconfinder.com/data/icons/basic-outline/64/icon-basic-set_12-camera-512.png'
+                    image: require('YonduApp/src/assets/images/real_estate.png')
                 },
                 {
                     id: 5,
                     name: 'Government',
-                    image: 'https://cdn0.iconfinder.com/data/icons/basic-outline/64/icon-basic-set_12-camera-512.png'
+                    image: require('YonduApp/src/assets/images/government.png')
                 },
                 {
                     id: 6,
                     name: 'Manufacturing',
-                    image: 'https://cdn0.iconfinder.com/data/icons/basic-outline/64/icon-basic-set_12-camera-512.png'
+                    image: require('YonduApp/src/assets/images/manufacturing.png')
                 },
                 {
                     id: 7,
                     name: 'Construction',
-                    image: 'https://cdn0.iconfinder.com/data/icons/basic-outline/64/icon-basic-set_12-camera-512.png'
+                    image: require('YonduApp/src/assets/images/construction.png')
                 },
                 {
                     id: 8,
                     name: 'Retail',
-                    image: 'https://cdn0.iconfinder.com/data/icons/basic-outline/64/icon-basic-set_12-camera-512.png'
+                    image: require('YonduApp/src/assets/images/retail.png')
                 }
             ],
 
-        Insights: {
-            CorporateNewsroom: 'Corporate Newsroom',
-            WebApp: 'Web Applications',
-            Solutions: 'Solutions'
-
-        },
+        Insights: [
+            {
+                id: 1,
+                name: 'React JS Today',
+                category: 'SOLUTIONS',
+                snippet: 'Lorem ipsum dolor sit amet, con secte tur adipiscing elit.',
+                date: 'Nov. 7, 2018',
+                image: require('YonduApp/src/assets/images/react-js.jpg'),
+                content: '"Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            },
+            {
+                id: 2,
+                name: 'React Native 101',
+                category: 'WEB APPLICATION',
+                snippet: 'Lorem ipsum dolor sit amet, con secte tur adipiscing elit.', 
+                date: 'Nov. 7, 2018',
+                image: require('YonduApp/src/assets/images/react_native_101.jpg'),
+                content: '"Lorem ipsum dolor sit amet, con secte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            },
+            {
+                id: 3,
+                name: 'React Alicante 2018',
+                category: 'WEB APPLICATION',
+                snippet: 'Lorem ipsum dolor sit amet, con secte tur adipiscing elit.',
+                 date: 'Nov. 7, 2018',
+                image: require('YonduApp/src/assets/images/react_alicante.jpg'),
+                content: '"Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            },
+            {
+                id: 1,
+                name: 'React JS Today',
+                category: 'SOLUTIONS',
+                snippet: 'Lorem ipsum dolor sit amet, con secte tur adipiscing elit.',
+                date: 'Nov. 7, 2018',
+                image: require('YonduApp/src/assets/images/react-js.jpg'),
+                content: '"Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            },
+            {
+                id: 2,
+                name: 'React Native 101',
+                category: 'WEB APPLICATION',
+                snippet: 'Lorem ipsum dolor sit amet, con secte tur adipiscing elit.', 
+                date: 'Nov. 7, 2018',
+                image: require('YonduApp/src/assets/images/react_native_101.jpg'),
+                content: '"Lorem ipsum dolor sit amet, con secte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            },
+            {
+                id: 3,
+                name: 'React Alicante 2018',
+                category: 'WEB APPLICATION',
+                snippet: 'Lorem ipsum dolor sit amet, con secte tur adipiscing elit.',
+                 date: 'Nov. 7, 2018',
+                image: require('YonduApp/src/assets/images/react_alicante.jpg'),
+                content: '"Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.. Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            },
+        ],
 
         Careers: {
             Welcome: [

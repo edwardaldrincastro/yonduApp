@@ -1,35 +1,47 @@
 import React, { Component } from 'react'
 import { StyleSheet, ScrollView, Text, View, TouchableOpacity, BackHandler } from 'react-native'
 import { createDrawerNavigator, createAppContainer, DrawerItems, SafeAreaView } from "react-navigation"
+import IndustriesStack from "./IndustriesStack"
+import InsightsStack from "./InsightsStack"
 import StackNavigator from "./StackNavigator";
+// import { InsightsStack, IndustriesStack, StackNavigator } from "../components"
 import { About, WhatWeDo, ContactUs, Careers, Insights, Industries } from "../views"
-import { Footer } from "native-base";
 
 const FeaturesDrawer = createDrawerNavigator({
-    WhatWeDo: StackNavigator,
-    Industries: Industries,
-    Insights: Insights,
+    WhatWeDo: {
+        screen: StackNavigator,
+        navigationOptions: {
+            drawerLabel: 'What We Do?'
+        }
+    },
+    Industries: IndustriesStack,
+    Insights: InsightsStack,
     Careers: Careers,
-    About: About,
+    About: {
+        screen: About,
+        navigationOptions: {
+            drawerLabel: 'About Yondu'
+        }
+    },
     ContactUs: ContactUs
 
-},
+    },
     {
         initialRouteName: 'WhatWeDo',
         defaultNavigationOptions: {
             // headerLeft: <MenuIcon/>,
             headerBackground: '#212121',
-            drawerLabel: 'What We Do?'
+            // drawerLabel: 'What We Do?'
         },
         contentOptions: {
             activeTintColor: '#66CC99',
             inactiveTintColor: '#909191',
             activeBackgroundColor: 'transparent',
             labelStyle: {
-              fontSize: 16,
-              fontWeight: 'normal'
+                fontSize: 16,
+                fontWeight: 'normal'
             }
-          },
+        },
         contentComponent: (props) => (
             <View style={styles.container}>
 

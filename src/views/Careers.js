@@ -24,10 +24,7 @@ class Careers extends Component {
         console.log(services);
         return (
             <View style={styles.container}>
-                <Services route={route} routeID={routeID} />
-                <View style={{ width: '100%', paddingVertical: 15, paddingHorizontal: 15, justifyContent: 'center', }}>
-                    <ButtonCustom />
-                </View>
+                <Text>About</Text>
             </View>
         )
     }

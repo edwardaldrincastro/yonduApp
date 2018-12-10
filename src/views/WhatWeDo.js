@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, BackHandler } from 'react-native'
+import { StyleSheet, Text, View, BackHandler, TouchableOpacity } from 'react-native'
 import { Services, ButtonCustom } from "../components"
+import { Burger } from "../utilities/icons";
+
+
 
 class WhatWeDo extends Component {
     handleBackPress = () => {
@@ -14,14 +17,20 @@ class WhatWeDo extends Component {
     componentWillUnmount() {
         BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress)
     }
-
+    static navigationOptions = ({ navigation }) => {
+        return {
+        headerLeft: (<TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+            <Burger />
+        </TouchableOpacity>),
+    }
+}
     render() {
         const route = this.props.navigation.getParam('name', 'No name')
         const routeID = this.props.navigation.getParam('id', 'No ID')
         return (
             <View style={styles.container}>
                 <View style={styles.content}>
-                {/* <Text>asd</Text> */}
+                    {/* <Text>asd</Text> */}
                     <Services route={route} routeID={routeID} />
                 </View>
                 <View style={styles.buttonContainer}>

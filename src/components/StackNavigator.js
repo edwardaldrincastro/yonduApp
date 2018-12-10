@@ -1,7 +1,8 @@
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, BackHandler, Button, ScrollView, Image } from 'react-native'
 import { createStackNavigator, createAppContainer } from "react-navigation"
 import { WhatWeDo, Quotation, ThankYou } from "../views"
 import { Burger } from "../utilities/icons";
-import { } from "./";
 
 const StackNavigator = createStackNavigator({
     WhatWeDo: WhatWeDo,
@@ -10,8 +11,16 @@ const StackNavigator = createStackNavigator({
 },
     {
         initialRouteName: 'WhatWeDo',
+        headerLayoutPreset: 'center',
+        defaultNavigationOptions: ({ navigation }) => {
+            return {
+                title: 'What We Do?',
+                
+
+            }
+        },
         navigationOptions: {
-            title: 'What we do'
+            drawer: 'What We Do?'
         }
     })
 

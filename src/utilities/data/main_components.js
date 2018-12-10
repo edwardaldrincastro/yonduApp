@@ -1,27 +1,33 @@
 export const main_components = [
     {
         id: 1,
-        name: 'What We Do?'
+        name: 'What We Do?',
+        image: require('YonduApp/src/assets/images/what_we_do.jpg')
     },
     {
         id: 2,
-        name: 'Industries'
+        name: 'Industries',
+        image: require('YonduApp/src/assets/images/industries.jpg')
     },
     {
         id: 3,
-        name: 'Insights'
+        name: 'Insights',
+        image: require('YonduApp/src/assets/images/insights.jpg')
     },
     {
         id: 4,
-        name: 'Careers'
+        name: 'Careers',
+        image: require('YonduApp/src/assets/images/careers.jpg')
     },
     {
         id: 5,
-        name: 'About'
+        name: 'About',
+        image: require('YonduApp/src/assets/images/about_yondu.jpg')
     },
     {
         id: 6,
-        name: 'Contact Us'
+        name: 'Contact Us',
+        image: require('YonduApp/src/assets/images/contact_us.jpg')
     }
 ]
 

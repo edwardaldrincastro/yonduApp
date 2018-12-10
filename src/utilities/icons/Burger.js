@@ -5,7 +5,7 @@ export default class Burger extends Component {
 
   render() {
     return (
-      <Icon name='ios-menu' color='#000' size={30} />
+      <Icon name='ios-menu' color='#000' size={30} style={{padding: 10}}/>
     )
   }
 }
