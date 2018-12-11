@@ -11,11 +11,9 @@ class ButtonCustom extends Component {
 
     render() {
         
-        const {text, ...rest} = this.props
-        const route = this.props.route
-        const navigation = this.props.navigation
+        const {text, onPress, ...rest} = this.props
         return (
-            <TouchableOpacity onPress={() => navigation.navigate(route)}>
+            <TouchableOpacity onPress={onPress}>
 
                 <View style={{ width: '100%', height: 45, backgroundColor: '#66CC99', borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
                     <Text style={{ color: '#fff', fontSize: 18 }}>{text}</Text>

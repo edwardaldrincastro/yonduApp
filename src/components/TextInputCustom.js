@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 // import { Button, Text } from "native-base";
-
+let color
 class TextInputCustom extends Component {
     constructor(props) {
         super(props);
@@ -10,14 +10,15 @@ class TextInputCustom extends Component {
     }
 
     render() {
-        const { placeholder, error, ...rest } = this.props
+        const { placeholder, error, value, onChangeText, ...rest } = this.props
+        error ? color= '#DE5448' : color= '#fff'
         // const route = this.props.route
         // const buttonText = this.props.text
         // const navigation = this.props.navigation
         return (
             <View style={styles.inputContainer}>
-                <TextInput placeholder={placeholder}/>
-                <Text style={styles.error}>{error}</Text>
+                <TextInput placeholder={placeholder} onChangeText={onChangeText} value={value} style={{borderWidth: 1, borderColor: color}}/>
+                {/* <Text style={styles.error}>{error}</Text> */}
             </View>
         );
     }
@@ -42,6 +43,10 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#EFF0F4',
         margin: 10
+    },
+    textInput: {
+        borderColor: '#fff',
+        borderWidth: 1
     }
 
 })

@@ -6,7 +6,10 @@ import Back from "./Back";
 import People from "./People"
 import Ribbon from "./Ribbon"
 import Unlock from "./Unlock"
-import Share from "./Share";
+import ShareIcon from "./Share"
+import Mail from "./Mail"
+import Navigate from "./Navigate"
+import Phone from "./Phone"
 
 export {
     Apps, 
@@ -17,5 +20,8 @@ export {
     Ribbon,
     Unlock,
     Back,
-    Share
+    ShareIcon,
+    Phone,
+    Navigate,
+    Mail
 }

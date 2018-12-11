@@ -24,7 +24,7 @@ class Careers extends Component {
         console.log(services);
         return (
             <View style={styles.container}>
-                <Text>About</Text>
+                <Text>Career</Text>
             </View>
         )
     }

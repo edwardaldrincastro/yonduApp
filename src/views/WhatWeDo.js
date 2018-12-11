@@ -34,7 +34,7 @@ class WhatWeDo extends Component {
                     <Services route={route} routeID={routeID} />
                 </View>
                 <View style={styles.buttonContainer}>
-                    <ButtonCustom text={'Get a Quote'} navigation={this.props.navigation} route={'Quotation'} />
+                    <ButtonCustom text={'Get a Quote'} onPress={() => this.props.navigation.navigate('Quotation')} route={'Quotation'} />
                 </View>
             </View>
         )

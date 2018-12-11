@@ -1,18 +1,45 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, BackHandler, ImageBackground, ScrollView } from 'react-native'
 import { HeaderCustom } from "../components"
-import { DimensionsHeight, DimensionsWidth } from "../utilities/Dimensions";
+import { DimensionsHeight, DimensionsWidth } from "../utilities/Dimensions"
+let scrollPosition
 class Insights extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            headerColor: 'rgba(0,0,0,0)'
+        }
+    }
     handleBackPress = () => {
         this.props.navigation.goBack()
         return true
     }
+    scrollHandler = (event) => {
+        scrollPosition = event.nativeEvent.contentOffset.y
+        console.log(scrollPosition)
+        if (scrollPosition !== 0) {
+            this.setState({
+                headerColor: 'rgba(0,0,0,0.9)'
+            })
+        } else {
+            this.setState({
+                headerColor: 'rgba(0,0,0,0)'
+            })
+        }
+
+    }
+
     componentDidMount() {
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress)
     }
 
     componentWillUnmount() {
         BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress)
+    }
+    componentDidUpdate(prevProps) {
+        if (scrollPosition !== prevProps.scrollPosition) {
+            console.log('update')
+        }
     }
     static navigationOptions = {
         header: null
@@ -25,35 +52,41 @@ class Insights extends Component {
         const date = this.props.navigation.getParam('date', 'No date')
         const image = this.props.navigation.getParam('image', 'No image')
         const content = this.props.navigation.getParam('content', 'No content')
+        console.log('sp:', scrollPosition)
+        console.log(this.state.headerColor);
         console.log(DimensionsHeight)
         console.log(DimensionsWidth)
         return (
             <View style={styles.container}>
-                <View style={styles.imageContainer}>
-                    <ImageBackground source={image}
-                        style={styles.imageBackground}>
-                        {/* <View style={{ , width: '100%' }}> */}
-                        <HeaderCustom />
-                        <View style={{ height: 70, width: '100%', backgroundColor: 'rgba(0,0,0,0.6)' }}>
-                            <Text style={{padding: 20, color: '#fff', fontSize: 20, fontWeight: 'bold'}}>{name}</Text>
-                        </View>
-                        {/* </View> */}
-                    </ImageBackground>
+                <ScrollView
+                    onScroll={event => this.scrollHandler(event)}
+                    scrollEventThrottle={16}
+                    style={{
+                        maxHeight: DimensionsHeight - 26
+                    }}>
+                    <View style={styles.imageContainer}>
+                        <ImageBackground source={image}
+                            style={styles.imageBackground}>
+                            <View style={{ height: 70, width: '100%', backgroundColor: 'rgba(0,0,0,0.6)' }}>
+                                <Text style={{ padding: 20, color: '#fff', fontSize: 20, fontWeight: 'bold' }}>{name}</Text>
+                            </View>
+                        </ImageBackground>
 
-                </View>
+                    </View>
 
-                <ScrollView style={{
-                    maxHeight: DimensionsHeight * 0.55
-                }}>
                     <View style={styles.contentContainer}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 15 }}>
-                            <Text>{category} </Text>
-                            <Text>{date}</Text>
+                            <Text style={styles.category}>{category} </Text>
+                            <Text style={styles.date}>{date}</Text>
 
                         </View>
-                        <Text style={{ paddingHorizontal: 15, fontSize: 18 }}>{content}</Text>
+                        <Text style={styles.content}>{content}</Text>
                     </View>
                 </ScrollView>
+                <View style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
+                    <HeaderCustom style={{ backgroundColor: this.state.headerColor }} name={name} navigation={this.props.navigation} />
+                </View>
+
             </View>
         )
     }
@@ -72,15 +105,28 @@ const styles = StyleSheet.create({
         height: '100%',
         // justifyContent: 'center',
         // alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'flex-end'
     },
     imageContainer: {
         flex: 2,
         backgroundColor: '#212121',
+        minHeight: DimensionsHeight * 0.4
     },
     contentContainer: {
         flex: 3,
-        backgroundColor: '#E3715C',
+        backgroundColor: '#fff',
+    },
+    category: {
+        color: '#8d8d8d',
+        fontSize: 15
+    },
+    date: {
+        color: '#8d8d8d',
+        fontSize: 15
+    },
+    content: {
+        paddingHorizontal: 20,
+        fontSize: 17
     },
     featureText: {
         fontSize: 20,
@@ -88,24 +134,6 @@ const styles = StyleSheet.create({
         color: '#007C60',
         textAlign: 'center',
         margin: 30,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-    button: {
-        width: "100%",
-        height: 40,
-        borderWidth: 1,
-        borderRadius: 5,
-        backgroundColor: '#FFC83D'
-    },
-    buttonText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#fff',
-
     }
 })
 

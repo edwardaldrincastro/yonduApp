@@ -24,7 +24,12 @@ class ContactUs extends Component {
         console.log(services);
         return (
             <View style={styles.container}>
-                <Text>About</Text>
+                <View style={styles.mapContainer}>
+
+                </View>
+                <View style={styles.contentContainer}>
+
+                </View>
             </View>
         )
     }
@@ -33,35 +38,18 @@ class ContactUs extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        backgroundColor: '#D8D8D8',
+        // justifyContent: 'space-around',
+        // alignItems: 'center',
+        backgroundColor: '#fff',
         // padding: 20
     },
-    featureText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#007C60',
-        textAlign: 'center',
-        margin: 30,
+    mapContainer: {
+        flex: 1,
+        backgroundColor: '#212121'
     },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-    button: {
-        width: "100%",
-        height: 40,
-        borderWidth: 1,
-        borderRadius: 5,
-        backgroundColor: '#FFC83D'
-    },
-    buttonText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#fff',
-
+    contentContainer: {
+        flex: 1,
+        backgroundColor: '#E61A5F'
     }
 })
 

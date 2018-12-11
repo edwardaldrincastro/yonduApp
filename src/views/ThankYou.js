@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 import { Services, ButtonCustom } from "../components"
 
 class ThankYou extends Component {
@@ -10,11 +10,14 @@ class ThankYou extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.content}>
-                    <Text>Thank you for your inquiry</Text>
-                    <Text>Your message has been sent successfully</Text>
+                    <View style={{ flex: 1, padding: 20, justifyContent: 'center', alignItems: 'center', }}>
+                        <Image source={require('../assets/images/clive-thank-you.png')} style={{height: '50%', width: '50%'}}/>
+                        <Text style={styles.title}>Thank you for your inquiry</Text>
+                        <Text style={styles.subtitle}>Your message has been sent successfully.</Text>
+                    </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <ButtonCustom text={'Back to Home'} navigation={this.props.navigation} route={'Home'} />
+                    <ButtonCustom text={'Back to Home'} onPress={() => this.props.navigation.navigate('Home')} />
                 </View>
             </View>
         );
@@ -39,6 +42,19 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         paddingHorizontal: 15,
         justifyContent: 'center'
+    },
+    title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#000',
+        padding: 10,
+    },
+    subtitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#8d8d8d',
+        width: '48%',
+        textAlign: 'center'
     }
 })
 
