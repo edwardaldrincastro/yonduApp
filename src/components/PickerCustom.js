@@ -35,7 +35,7 @@ class PickerCustom extends Component {
 
     render() {
         const { solutions, solutionsType, handleSelectSolution, selectedSolution, selectedService, values, title, dynamic, error } = this.props
-
+        // const 
         let color, test
         test = this.handler(dynamic, solutions, solutionsType, values, selectedSolution)
         // if (error) {

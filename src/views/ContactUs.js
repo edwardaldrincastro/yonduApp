@@ -48,7 +48,7 @@ class ContactUs extends Component {
                     </MapView>
                     <View style={{ left: 5, position: 'absolute', top: 5 }}>
                         <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()}>
-                            <Burger/>
+                            <Burger black/>
                         </TouchableOpacity>
                     </View>
                 </View>

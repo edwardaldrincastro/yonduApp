@@ -11,13 +11,18 @@ const IndustriesStack = createStackNavigator({
     {
         initialRouteName: 'Industries',
         headerLayoutPreset: 'center',
-        defaultNavigationOptions: ({navigation}) => {
+        defaultNavigationOptions: ({ navigation }) => {
             return {
                 title: 'Industries',
                 headerLeft: (<TouchableOpacity onPress={() => navigation.navigate('Home')}>
                     <Back />
                 </TouchableOpacity>),
-
+                headerStyle: {
+                    backgroundColor: '#2FD095'
+                },
+                headerTitleStyle: {
+                    color: '#fff'
+                }
             }
         },
         navigationOptions: {
@@ -25,6 +30,6 @@ const IndustriesStack = createStackNavigator({
         }
     })
 
-const IndustriesContainer= createAppContainer(IndustriesStack)
+const IndustriesContainer = createAppContainer(IndustriesStack)
 
 export default IndustriesContainer

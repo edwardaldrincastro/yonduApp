@@ -8,7 +8,7 @@ const MainNavigator = createSwitchNavigator({
     Drawer: DrawerNavigator
     },
     {
-        initialRouteName: 'Home'
+        initialRouteName: 'Logo'
     })
   
 const AppContainer = createAppContainer(MainNavigator)

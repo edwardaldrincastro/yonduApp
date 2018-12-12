@@ -7,7 +7,7 @@ class Logo extends Component {
     componentDidMount() {
         setTimeout(() => {
             this.props.navigation.navigate('Home')
-        }, 800)
+        }, 500)
     }
     render() {
         return (
@@ -15,7 +15,7 @@ class Logo extends Component {
                 {/* <TouchableHighlight onPress={() => this.props.navigation.navigate('Home')}> */}
                 <View style={styles.logoContainer}>
                     <Image
-                        source={require('../assets/images/yondu_logo.jpg')}
+                        source={require('../assets/images/yondu_logo.png')}
                         resizeMode='contain'
                         style={styles.logo}
                     />
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         flex: 1,
         // justifyContent: 'center',
         // alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#66CD9A',
     },
     logoContainer: {
         width: '100%',
@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     logo: {
-        height: '50%',
-        width: '75%',
-        backgroundColor: '#fff'
+        height: '60%',
+        width: '60%',
+        // backgroundColor: '#fff'
     }
 })
 

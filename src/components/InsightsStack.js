@@ -12,13 +12,18 @@ const InsightsStack = createStackNavigator({
     {
         initialRouteName: 'Insights',
         headerLayoutPreset: 'center',
-        defaultNavigationOptions: ({navigation}) => {
+        defaultNavigationOptions: ({ navigation }) => {
             return {
                 title: 'Insights',
                 headerLeft: (<TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                    <Back/>
+                    <Back />
                 </TouchableOpacity>),
-
+                headerStyle: {
+                    backgroundColor: '#2FD095'
+                },
+                headerTitleStyle: {
+                    color: '#fff'
+                }
             }
         }
     })

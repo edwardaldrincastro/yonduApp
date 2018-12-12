@@ -66,9 +66,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     featureText: {
-        fontSize: 20,
+        fontSize: 22,
         fontWeight: 'bold',
-        color: '#00e2ad',
+        color: '#fff',
         textAlign: 'center',
         margin: 30
     }

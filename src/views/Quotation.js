@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Button, TextInput } from 'react-native'
+import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity } from 'react-native'
 import { TextInputCustom, ButtonCustom, PickerCustom } from "../components"
+import { Back } from "../utilities/icons";
 import { services } from "../utilities/data/data"
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+
+const axios = require('axios')
 
 class Quotation extends Component {
     constructor(props) {
@@ -12,9 +15,59 @@ class Quotation extends Component {
             localServices: services[0]
         };
     }
+    getData = async () => {
+        try {
+            const response = await axios.get('http://192.168.190.24:3000/qoute_list')
+            // setFieldValue('name','')
+            this.props.navigation.navigate(route)
+            console.log('quotation', response)
+            // console.log('getdata', response)
+            // console.log('my values:', values)
+            // response.data.length !== 0 ? await this.deleteData(response.data[0].id, FormikBag) : (alert('Name cannot be found'), console.log('no id found'))
+        } catch (error) {
+            console.log(error)
+            alert(error)
+        }
+    }
+    handleSubmit = async (values) => {
+        try {
+            console.log(values)
+            const response = await axios({
+                method: 'post',
+                url: 'http://192.168.190.24:3000/qoute_list',
+                data: {
+                    // ...values
+                    "solution": values.solution,
+                    "service": values.service,
+                    "name": values.name,
+                    "company": values.company,
+                    "email": values.email,
+                    "phone_number": values.phone_number,
+                    "message": values.message
+                },
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
 
-    static navigationOptions = {
-        title: 'Get a Quote'
+            // setFieldValue('name','')
+            console.log('quotation', response)
+            this.props.navigation.navigate('ThankYou')
+            // console.log('getdata', response)
+            // console.log('my values:', values)
+            // response.data.length !== 0 ? await this.deleteData(response.data[0].id, FormikBag) : (alert('Name cannot be found'), console.log('no id found'))
+        } catch (error) {
+            alert('error in post')
+            console.error(error);
+        }
+    }
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: 'Get a Quote',
+            headerLeft: (<TouchableOpacity onPress={() => navigation.goBack()}>
+                <Back />
+            </TouchableOpacity>),
+        }
     }
     render() {
 
@@ -26,33 +79,35 @@ class Quotation extends Component {
             <View style={styles.container}>
                 <Formik
                     initialValues={{
+                        
+                        solution: null,
+                        service: null,
                         name: null,
                         company: null,
                         email: null,
-                        phoneNumber: null,
+                        phone_number: null,
                         message: null,
-                        solutions: null,
-                        services: null
                     }}
-                    onSubmit={(values) =>
-
-                        this.props.navigation.navigate('ThankYou', { values: values })
+                    onSubmit={(route, values) =>
+                        // this.getData()
+                        this.handleSubmit(route, values)
+                        // this.props.navigation.navigate('ThankYou', { values: values })
                     }
                     validationSchema={Yup.object().shape({
                         name: Yup.string()
                             .required('Required name'),
                         company: Yup.string()
                             .required('Required company'),
-                        phoneNumber: Yup.string()
+                        phone_number: Yup.string()
                             .required('Required phoneNumber'),
                         email: Yup.string()
                             .required('Required email')
                             .email('Must be an email'),
                         message: Yup.string()
                             .required('Required message'),
-                        solutions: Yup.string()
+                        solution: Yup.string()
                             .required('Required solutions'),
-                        services: Yup.string()
+                        service: Yup.string()
                             .required('Required services'),
                     })}
                 >
@@ -65,19 +120,19 @@ class Quotation extends Component {
                                     <PickerCustom
                                         title="Solutions"
                                         solutionsType={solutionsType}
-                                        selectedSolution={values.solutions}
-                                        handleSelectSolution={handleChange('solutions')}
+                                        selectedSolution={values.solution}
+                                        handleSelectSolution={handleChange('solution')}
                                         solutions
-                                        error={touched.solutions && errors.solutions}
+                                        error={touched.solution && errors.solution}
                                     />
                                     <PickerCustom
                                         title="Services"
                                         solutionsType={solutionsType}
-                                        selectedService={values.services}
-                                        values={values.solutions}
-                                        handleSelectSolution={handleChange('services')}
+                                        selectedService={values.service}
+                                        values={values.solution}
+                                        handleSelectSolution={handleChange('service')}
                                         dynamic
-                                        error={touched.services && errors.services}
+                                        error={touched.service && errors.service}
                                     />
                                     <TextInputCustom
                                         name='name'
@@ -94,10 +149,10 @@ class Quotation extends Component {
                                         onChangeText={handleChange('email')}
                                         value={values.email}
                                         error={touched.email && errors.email} />
-                                    <TextInputCustom name='phoneNumber' placeholder='Phone Number'
-                                        onChangeText={handleChange('phoneNumber')}
-                                        value={values.phoneNumber}
-                                        error={touched.phoneNumber && errors.phoneNumber} />
+                                    <TextInputCustom name='phone_number' placeholder='Phone Number'
+                                        onChangeText={handleChange('phone_number')}
+                                        value={values.phone_number}
+                                        error={touched.phone_number && errors.phone_number} />
                                     <TextInputCustom name='message' placeholder='Message'
                                         onChangeText={handleChange('message')}
                                         value={values.message}

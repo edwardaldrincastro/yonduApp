@@ -15,12 +15,17 @@ const StackNavigator = createStackNavigator({
         defaultNavigationOptions: ({ navigation }) => {
             return {
                 title: 'What We Do?',
-                
+                headerStyle: {
+                    backgroundColor: '#2FD095'
+                },
+                headerTitleStyle: {
+                    color: '#fff'
+                }
 
             }
         },
         navigationOptions: {
-            drawer: 'What We Do?'
+            drawer: 'What We Do?',
         }
     })
 

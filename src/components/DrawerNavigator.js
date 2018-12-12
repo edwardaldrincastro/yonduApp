@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, ScrollView, Text, View, TouchableOpacity, BackHandler } from 'react-native'
+import { StyleSheet, ScrollView, Text, View, TouchableOpacity, Image } from 'react-native'
 import { createDrawerNavigator, createAppContainer, DrawerItems, SafeAreaView } from "react-navigation"
 import IndustriesStack from "./IndustriesStack"
 import InsightsStack from "./InsightsStack"
@@ -25,7 +25,7 @@ const FeaturesDrawer = createDrawerNavigator({
     },
     ContactUs: ContactUs
 
-    },
+},
     {
         initialRouteName: 'WhatWeDo',
         defaultNavigationOptions: {
@@ -46,14 +46,22 @@ const FeaturesDrawer = createDrawerNavigator({
             <View style={styles.container}>
 
                 <ScrollView>
-                    <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
+                    {/* <Image style={{ height: '50%', width: '100%' }}
+                        source={require('../assets/images/coding.jpg')} /> */}
+                    {/* <SafeAreaView forceInset={{ top: 'always', horizontal: 'never', }}> */}
+                    {/* <View style={{flex:1}}> */}
+
+                    {/* </View> */}
+                    <View style={{ flex: 1, backgroundColor: '#212121', height: '100%' }}>
+
                         <DrawerItems {...props} />
 
-                    </SafeAreaView>
+                    </View>
+                    {/* </SafeAreaView> */}
                 </ScrollView>
-                <View style={{ flex: 1, justifyContent: 'flex-end', paddingVertical: 15, paddingHorizontal: 16 }}>
-                    <Text>Subscribe with Email</Text>
-                </View>
+                {/* <View style={{ flex: 1, justifyContent: 'flex-end', paddingVertical: 15, paddingHorizontal: 16 }}> */}
+                {/* <Text>Subscribe with Email</Text> */}
+                {/* </View> */}
             </View>
         )
     })
@@ -62,7 +70,8 @@ const DrawerContainer = createAppContainer(FeaturesDrawer)
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
+        flex: 1,
+        // height: '100%',
         width: '100%'
     },
 });
