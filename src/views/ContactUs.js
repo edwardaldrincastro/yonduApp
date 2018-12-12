@@ -1,11 +1,23 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, BackHandler } from 'react-native'
+import MapView from "react-native-maps";
 import { main_components, company_name, custom_style, services } from "../utilities/data/main_components"
 import { Services } from "../components";
-import { Navigate, Phone, Mail } from "../utilities/icons";
+import { Navigate, Phone, Mail, Burger } from "../utilities/icons";
 import { DimensionsHeight, DimensionsWidth } from "../utilities/Dimensions";
 
 class ContactUs extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            focusedLocation: {
+                latitude: 14.5556425,
+                longitude: 121.050026,
+                latitudeDelta: 0.005,
+                longitudeDelta: DimensionsWidth / DimensionsHeight * 0.005
+            }
+        };
+    }
     handleBackPress = () => {
         this.props.navigation.navigate('Home')
         return true
@@ -27,7 +39,18 @@ class ContactUs extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.mapContainer}>
-
+                    <MapView
+                        style={styles.map}
+                        initialRegion={this.state.focusedLocation}
+                        // onPress={this.pickLocationHandler}
+                        ref={ref => this.map = ref}>
+                        <MapView.Marker coordinate={this.state.focusedLocation} />
+                    </MapView>
+                    <View style={{ left: 5, position: 'absolute', top: 5 }}>
+                        <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()}>
+                            <Burger/>
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 <View style={styles.contentContainer}>
                     <View style={styles.contactContainer}>
@@ -42,7 +65,7 @@ class ContactUs extends Component {
                         <Mail />
                         <Text>business@yondu.com</Text>
                     </View>
-              
+
                 </View>
             </View>
         )
@@ -59,7 +82,6 @@ const styles = StyleSheet.create({
     },
     mapContainer: {
         flex: 1,
-        backgroundColor: '#212121'
     },
     contentContainer: {
         flex: 1,
@@ -79,7 +101,11 @@ const styles = StyleSheet.create({
     },
     address: {
         flex: 1
-    }
+    },
+    map: {
+        height: "100%",
+        width: "100%",
+    },
 })
 
 export default ContactUs
