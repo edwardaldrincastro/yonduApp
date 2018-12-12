@@ -10,6 +10,7 @@ import ShareIcon from "./Share"
 import Mail from "./Mail"
 import Navigate from "./Navigate"
 import Phone from "./Phone"
+import Locate from "./Locate"
 
 export {
     Apps, 
@@ -23,5 +24,6 @@ export {
     ShareIcon,
     Phone,
     Navigate,
-    Mail
+    Mail,
+    Locate
 }

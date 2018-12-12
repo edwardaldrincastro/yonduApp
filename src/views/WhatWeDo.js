@@ -19,22 +19,24 @@ class WhatWeDo extends Component {
     }
     static navigationOptions = ({ navigation }) => {
         return {
-        headerLeft: (<TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-            <Burger />
-        </TouchableOpacity>),
+            headerLeft: (<TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+                <Burger />
+            </TouchableOpacity>),
+        }
     }
-}
     render() {
-        const route = this.props.navigation.getParam('name', 'No name')
-        const routeID = this.props.navigation.getParam('id', 'No ID')
+        const route = this.props.navigation.state.routeName
+        // const route = this.props.navigation.getParam('name', 'No name')
+        // const routeID = this.props.navigation.getParam('id', 'No ID')
+        
         return (
             <View style={styles.container}>
                 <View style={styles.content}>
                     {/* <Text>asd</Text> */}
-                    <Services route={route} routeID={routeID} />
+                    <Services route={route} />
                 </View>
                 <View style={styles.buttonContainer}>
-                    <ButtonCustom text={'Get a Quote'} onPress={() => this.props.navigation.navigate('Quotation')} route={'Quotation'} />
+                    <ButtonCustom text={'Get a Quote'} onPress={() => this.props.navigation.navigate('Quotation', { route: route })} />
                 </View>
             </View>
         )

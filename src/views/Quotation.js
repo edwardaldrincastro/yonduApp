@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Button, TextInput } from 'react-native'
 import { TextInputCustom, ButtonCustom, PickerCustom } from "../components"
+import { services } from "../utilities/data/data"
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 
@@ -8,37 +9,35 @@ class Quotation extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            localServices: services[0]
         };
     }
-    // handleSubmit = (values) => {
-    //     alert(JSON.stringify(values))
-    //     console.log(values)
-    //     console.log(formikBag)
-    // }
-    checker = values => {
-        alert(JSON.stringify(values))
-        console.log(values)
-        // return this.props.navigation.navigate('ThankYou')
-    }
-    // handleData = (values) => {
-    //     await this.getData(values)
-    //     await handleReset
-    // }
-    handleReset = () => {
-        console.log('reset')
-    }
-    handleRoute = (route) => {
-        this.props.navigation.navigate(route)
-    }
+
     static navigationOptions = {
         title: 'Get a Quote'
     }
     render() {
+
+        const route = this.props.navigation.getParam('route', 'No route received')
+        const solutionsType = this.state.localServices[route]
+        console.log('solType', solutionsType);
+        console.log('route name:', route)
         return (
             <View style={styles.container}>
                 <Formik
-                    initialValues={{ name: '', company: '', email: '', phoneNumber: '', message: '' }}
-                    onSubmit={() => this.props.navigation.navigate('ThankYou')}
+                    initialValues={{
+                        name: null,
+                        company: null,
+                        email: null,
+                        phoneNumber: null,
+                        message: null,
+                        solutions: null,
+                        services: null
+                    }}
+                    onSubmit={(values) =>
+
+                        this.props.navigation.navigate('ThankYou', { values: values })
+                    }
                     validationSchema={Yup.object().shape({
                         name: Yup.string()
                             .required('Required name'),
@@ -51,6 +50,10 @@ class Quotation extends Component {
                             .email('Must be an email'),
                         message: Yup.string()
                             .required('Required message'),
+                        solutions: Yup.string()
+                            .required('Required solutions'),
+                        services: Yup.string()
+                            .required('Required services'),
                     })}
                 >
                     {({ handleSubmit, handleChange, values, touched, errors }) => {
@@ -58,8 +61,24 @@ class Quotation extends Component {
 
                             <View style={styles.container}>
                                 <View style={styles.content}>
-                                    <PickerCustom />
-                                    <PickerCustom />
+                                    {/* <PickerCustom /> */}
+                                    <PickerCustom
+                                        title="Solutions"
+                                        solutionsType={solutionsType}
+                                        selectedSolution={values.solutions}
+                                        handleSelectSolution={handleChange('solutions')}
+                                        solutions
+                                        error={touched.solutions && errors.solutions}
+                                    />
+                                    <PickerCustom
+                                        title="Services"
+                                        solutionsType={solutionsType}
+                                        selectedService={values.services}
+                                        values={values.solutions}
+                                        handleSelectSolution={handleChange('services')}
+                                        dynamic
+                                        error={touched.services && errors.services}
+                                    />
                                     <TextInputCustom
                                         name='name'
                                         placeholder='Name'

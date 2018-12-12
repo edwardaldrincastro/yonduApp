@@ -6,7 +6,7 @@ export default class Phone extends Component {
   render() {
     this.props.white ? color = '#fff' : color = '#000'
     return (
-      <Icon name='ios-phone' color={color} size={32} style={{padding: 20}}/>
+      <Icon name='ios-phone-portrait' color={color} size={32} style={{padding: 25}}/>
     )
   }
 }

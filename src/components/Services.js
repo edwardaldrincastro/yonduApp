@@ -42,7 +42,7 @@ class Services extends Component {
     }
     render() {
         const route = this.props.route
-        const routeID = this.props.routeID
+        // const routeID = this.props.routeID
         console.log('route name', route);
         console.log('local', this.state.localServices)
         const routeArray = this.routeHandler(route)

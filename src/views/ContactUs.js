@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, BackHandler } from 'react-native'
 import { main_components, company_name, custom_style, services } from "../utilities/data/main_components"
 import { Services } from "../components";
+import { Navigate, Phone, Mail } from "../utilities/icons";
+import { DimensionsHeight, DimensionsWidth } from "../utilities/Dimensions";
 
 class ContactUs extends Component {
     handleBackPress = () => {
@@ -28,7 +30,19 @@ class ContactUs extends Component {
 
                 </View>
                 <View style={styles.contentContainer}>
-
+                    <View style={styles.contactContainer}>
+                        <Navigate />
+                        <Text style={styles.address}>Lower Penthouse, Panorama Building, 34th St. cor Lane A, Bonifacio Global City, Taguig, Philippines 1634</Text>
+                    </View>
+                    <View style={styles.contactContainer}>
+                        <Phone />
+                        <Text>+63917-444-2222</Text>
+                    </View>
+                    <View style={styles.contactContainer}>
+                        <Mail />
+                        <Text>business@yondu.com</Text>
+                    </View>
+              
                 </View>
             </View>
         )
@@ -49,7 +63,22 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         flex: 1,
-        backgroundColor: '#E61A5F'
+        width: '100%',
+        backgroundColor: '#fff',
+        paddingHorizontal: 20,
+        paddingTop: 20,
+        // paddingVertical: 40,
+        // alignItems: 'center',
+        // justifyContent: 'flex-start',
+        maxHeight: DimensionsHeight * 0.48
+    },
+    contactContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start'
+    },
+    address: {
+        flex: 1
     }
 })
 
