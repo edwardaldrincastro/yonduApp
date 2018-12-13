@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Share } from 'react-native'
-import { Back, ShareIcon } from "../utilities/icons";
+import { Back, ShareIcon } from "../utilities/icons"
+import { DimensionsWidth } from "../utilities/Dimensions";
 
 class ButtonCustom extends Component {
     constructor(props) {
         super(props);
         this.state = {
         };
+    }
+    backHandler = (route, navigation) => {
+        route === 'back' ? navigation.goBack() : navigation.navigate(route)
     }
     onClick = (name) => {
         Share.share({
@@ -24,18 +28,29 @@ class ButtonCustom extends Component {
     }
     render() {
 
-        const { name, text, style, route, ...rest } = this.props
+        const { name, text, style, title, route, share, ...rest } = this.props
         const navigation = this.props.navigation
         return (
 
             <View style={[styles.headerContainer, style]}>
                 {/* <Text style={{ color: '#fff', fontSize: 18 }}>{text}</Text> */}
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Back white />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.onClick(name)}>
-                    <ShareIcon />
-                </TouchableOpacity>
+                <View style={{ flex: 1 }}>
+
+                    <TouchableOpacity onPress={() => this.backHandler(route, navigation)}>
+                        <Back white />
+                    </TouchableOpacity>
+                </View>
+                <View style={{ flex: 5 }}>
+                    <Text style={{textAlign: 'center', color: '#fff', fontSize: 18, fontWeight: 'bold' }}>{title}</Text>
+
+                </View>
+
+                <View style={{ flex: 1 }}>
+                    {share ? <TouchableOpacity onPress={() => this.onClick(name)}>
+                        <ShareIcon />
+                    </TouchableOpacity>
+                        : null}
+                </View>
 
             </View>
 
@@ -46,7 +61,7 @@ class ButtonCustom extends Component {
 const styles = StyleSheet.create({
     headerContainer: {
         width: '100%',
-        justifyContent: 'space-between',
+        // justifyContent: 'space-between',
         alignItems: 'center',
         // paddingHorizontal: 20,
         flexDirection: 'row',

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Button, TextInput } from 'react-native'
-import { TextInputCustom, ButtonCustom, PickerCustom } from "../components"
+import { TextInputCustom, ButtonCustom, PickerCustom, HeaderCustom } from "../components"
 import { services } from "../utilities/data/data"
 import { Formik } from 'formik'
 import * as Yup from 'yup'
@@ -11,58 +11,42 @@ class Newsletter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            localServices: services[0]
+            localServices: services[0],
+            headerColor: '#2FD095'
         };
     }
 
-    handleSubmit = (route, values) => {
+    handleSubmit = async (values) => {
         try {
             const response = await axios({
                 method: 'post',
-                url: 'http://10.0.3.2:3000/quote_list/',
-                params: {
-                    // id: 1,
-                    solution: values.solutions,
-                    service: values.services,
-                    name: values.name,
-                    company: balues.company,
-                    email: balues.email,
-                    phone_number: values.phoneNumber,
-                    message: values.message
+                url: 'http://192.168.190.24:3000/news_letter',
+                data: {
+                    ...values
                 },
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 }
             })
-
-            // setFieldValue('name','')
             console.log('news letter', response);
-            // console.log('getdata', response)
-            // console.log('my values:', values)
-            // response.data.length !== 0 ? await this.deleteData(response.data[0].id, FormikBag) : (alert('Name cannot be found'), console.log('no id found'))
+            this.props.navigation.navigate('ThankYou')
         } catch (error) {
             alert('error in get')
             console.error(error);
         }
     }
     static navigationOptions = {
-        title: 'Get a Quote'
+        drawerLabel: () => null
     }
     render() {
-
-        const route = this.props.navigation.getParam('route', 'No route received')
-        const solutionsType = this.state.localServices[route]
-        console.log('solType', solutionsType);
-        console.log('route name:', route)
         return (
             <View style={styles.container}>
                 <Formik
                     initialValues={{
                         email: null,
                     }}
-                    onSubmit={(route, values) =>
-                        this.handleSubmit(route, values)
-                        // this.props.navigation.navigate('ThankYou', { values: values })
+                    onSubmit={(values) =>
+                        this.handleSubmit(values)
                     }
                     validationSchema={Yup.object().shape({
                         email: Yup.string()
@@ -74,13 +58,20 @@ class Newsletter extends Component {
                         return (
 
                             <View style={styles.container}>
+                                <HeaderCustom style={{ backgroundColor: this.state.headerColor }} title={'Subscribe with Email'} navigation={this.props.navigation} route={'Home'}/>
+
                                 <View style={styles.content}>
-                                    <Text style={{textAlign: 'justify'}}>NEWSLETTER</Text>
-                                    <Text>Get the lastest tech news, careers and more!</Text>
-                                    <TextInputCustom name='email' placeholder='Email'
-                                        onChangeText={handleChange('email')}
-                                        value={values.email}
-                                        error={touched.email && errors.email} />
+                                    <View style={{ flex: 1, padding: 20, justifyContent: 'center', backgroundColor: "#fff" }}>
+
+                                        <View style={{padding: 20, justifyContent: 'center', alignItems:'center', backgroundColor: "#fff" }}>
+                                            <Text style={styles.title}>NEWSLETTER</Text>
+                                            <Text style={styles.subtitle}>Get the lastest tech news, careers and more!</Text>
+                                        </View>
+                                        <TextInputCustom name='email' placeholder='Email'
+                                            onChangeText={handleChange('email')}
+                                            value={values.email}
+                                            error={touched.email && errors.email} />
+                                    </View>
 
                                 </View>
                                 <View style={styles.buttonContainer}>
@@ -104,6 +95,21 @@ const styles = StyleSheet.create({
         // justifyContent: 'space-around',
         // alignItems: 'center',
         // padding: 20
+    },
+    title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#000',
+        padding: 10,
+        textAlign: 'center'
+    },
+    subtitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#8d8d8d',
+        width: '55%',
+        textAlign: 'center',
+
     },
     content: {
         flex: 9.2

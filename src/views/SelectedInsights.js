@@ -19,7 +19,7 @@ class Insights extends Component {
         console.log(scrollPosition)
         if (scrollPosition !== 0) {
             this.setState({
-                headerColor: 'rgba(0,0,0,0.9)'
+                headerColor: 'rgba(47,208,149,1)'
             })
         } else {
             this.setState({
@@ -45,13 +45,14 @@ class Insights extends Component {
         header: null
     }
     render() {
-        const id = this.props.navigation.getParam('id', 'No id')
-        const name = this.props.navigation.getParam('name', 'No name')
-        const category = this.props.navigation.getParam('category', 'No category')
-        const snippet = this.props.navigation.getParam('snippet', 'No snippet')
-        const date = this.props.navigation.getParam('date', 'No date')
-        const image = this.props.navigation.getParam('image', 'No image')
-        const content = this.props.navigation.getParam('content', 'No content')
+        const getParams = this.props.navigation.getParam
+        const id = getParams('id', 'No id')
+        const name = getParams('name', 'No name')
+        const category = getParams('category', 'No category')
+        const snippet = getParams('snippet', 'No snippet')
+        const date = getParams('date', 'No date')
+        const image = getParams('image', 'No image')
+        const content = getParams('content', 'No content')
         console.log('sp:', scrollPosition)
         console.log(this.state.headerColor);
         console.log(DimensionsHeight)
@@ -84,7 +85,7 @@ class Insights extends Component {
                     </View>
                 </ScrollView>
                 <View style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-                    <HeaderCustom style={{ backgroundColor: this.state.headerColor }} name={name} navigation={this.props.navigation} />
+                    <HeaderCustom style={{ backgroundColor: this.state.headerColor }} share name={name} navigation={this.props.navigation} route='back'/>
                 </View>
 
             </View>

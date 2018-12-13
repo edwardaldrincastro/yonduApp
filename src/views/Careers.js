@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, BackHandler } from 'react-native'
-import { main_components, company_name, custom_style, services } from "../utilities/data/main_components"
-import { Services, ButtonCustom } from "../components";
+import { HeaderCustom, ButtonCustom } from "../components";
+import { Warning } from "../utilities/icons";
 
 class Careers extends Component {
     handleBackPress = () => {
@@ -19,12 +19,13 @@ class Careers extends Component {
         drawerLabel: 'Careers',
     }
     render() {
-        const route = this.props.navigation.getParam('name', 'No name')
-        const routeID = this.props.navigation.getParam('id', 'No ID')
-        console.log(services);
+
         return (
             <View style={styles.container}>
-                <Text>Career</Text>
+                <HeaderCustom style={{ backgroundColor: '#2FD095' }} title={'Careers'} navigation={this.props.navigation} route={'Home'} />
+                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+                    <Warning />
+                </View>
             </View>
         )
     }
@@ -32,12 +33,8 @@ class Careers extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
-        width: '100%',
-        // justifyContent: 'space-around',
-        // alignItems: 'center',
+        flex: 1,
         backgroundColor: '#fff',
-        // padding: 20
     },
 })
 

@@ -7,7 +7,7 @@ class Logo extends Component {
     componentDidMount() {
         setTimeout(() => {
             this.props.navigation.navigate('Home')
-        }, 500)
+        }, 400)
     }
     render() {
         return (

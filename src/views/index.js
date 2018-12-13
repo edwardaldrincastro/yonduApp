@@ -10,6 +10,7 @@ import ContactUs from "./ContactUs"
 import Industries from "./Industries"
 import Insights from "./Insights"
 import WhatWeDo from "./WhatWeDo"
+import Newsletter from "./Newsletter"
 
 export {
     Home,
@@ -22,5 +23,6 @@ export {
     Industries,
     Insights,
     WhatWeDo,
-    SelectedInsights
+    SelectedInsights,
+    Newsletter,
 }

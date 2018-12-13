@@ -11,6 +11,7 @@ import Mail from "./Mail"
 import Navigate from "./Navigate"
 import Phone from "./Phone"
 import Locate from "./Locate"
+import Warning from "./Warning"
 
 export {
     Apps, 
@@ -25,5 +26,6 @@ export {
     Phone,
     Navigate,
     Mail,
-    Locate
+    Locate,
+    Warning
 }

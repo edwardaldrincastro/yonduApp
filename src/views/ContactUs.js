@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, BackHandler } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, BackHandler, Linking } from 'react-native'
 import MapView from "react-native-maps";
 import { main_components, company_name, custom_style, services } from "../utilities/data/main_components"
 import { Services } from "../components";
@@ -17,6 +17,13 @@ class ContactUs extends Component {
                 longitudeDelta: DimensionsWidth / DimensionsHeight * 0.005
             }
         };
+    }
+    contactHandler = (number) => {
+        Linking.openURL(`tel:${number}`).catch(err => console.error('An error occurred', err));
+    }
+    emailHandler = (email) => {
+
+        Linking.openURL(`mailto:${email}`).catch(err => console.error('An error occurred', err));
     }
     handleBackPress = () => {
         this.props.navigation.navigate('Home')
@@ -48,7 +55,7 @@ class ContactUs extends Component {
                     </MapView>
                     <View style={{ left: 5, position: 'absolute', top: 5 }}>
                         <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()}>
-                            <Burger black/>
+                            <Burger black />
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -59,11 +66,16 @@ class ContactUs extends Component {
                     </View>
                     <View style={styles.contactContainer}>
                         <Phone />
-                        <Text>+63917-444-2222</Text>
+                        <TouchableOpacity onPress={() => this.contactHandler('+63917-444-2222')}>
+                            <Text>+63917-444-2222</Text>
+ 
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.contactContainer}>
                         <Mail />
-                        <Text>business@yondu.com</Text>
+                        <TouchableOpacity onPress={() => this.emailHandler('business@yondu.com')}>
+                            <Text>business@yondu.com</Text>
+                        </TouchableOpacity>
                     </View>
 
                 </View>
