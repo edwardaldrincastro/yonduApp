@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, BackHandler, ImageBackground, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, BackHandler, ImageBackground, ScrollView, Animated } from 'react-native'
 import { HeaderCustom } from "../components"
 import { DimensionsHeight, DimensionsWidth } from "../utilities/Dimensions"
 let scrollPosition

@@ -13,36 +13,40 @@ class PickerCustom extends Component {
             if (values) {
                 let service = solutionsType.filter(item => item.name === values)
                 let specific = service[0].content
-                return (specific.map(val => (
-                    <Picker.Item key={val} label={val} value={val} />)))
-
-
-                //    return <Picker.Item key={10} label='Solution' value='Solution' />
+                return (specific.map(val => {
+                    console.log('val id', val.id);
+                    if (val.id === 0) {
+                        return <Picker.Item key={val.id} label={val.name} value={''} />
+                    } else {
+                        return <Picker.Item key={val} label={val} value={val} />
+                    }
+                }
+                ))
             } else {
-                return <Picker.Item label='Services' value={null} />
+
+                return <Picker.Item label='Services' value={''} />
+
+
             }
         } else if (solutions) {
-            // if (selectedSolution === null) {
-            //     return <Picker.Item label='What solution do you need?' value={null} />
-            // } else {
-            return (solutionsType.map(item => (
-                <Picker.Item key={item.id} label={item.name} value={item.name} />
-            )))
-            // }
+            return (solutionsType.map(item => {
+                console.log('item id', item.id);
+                if (item.id === 0) {
+                    return <Picker.Item key={item.id} label={item.name} value={''} />
+                } else {
+                    return <Picker.Item key={item.id} label={item.name} value={item.name} />
+                }
+            }
+            ))
         }
 
     }
 
     render() {
         const { solutions, solutionsType, handleSelectSolution, selectedSolution, selectedService, values, title, dynamic, error } = this.props
-        // const 
+
         let color, test
         test = this.handler(dynamic, solutions, solutionsType, values, selectedSolution)
-        // if (error) {
-        //     return color = '#DD4F43'
-        // } else {
-        //     color = '#EFF0F4'
-        // }
         error ? color = '#DE5448' : color = '#EFF0F4'
         return (
             <View style={{
@@ -55,7 +59,6 @@ class PickerCustom extends Component {
                     selectedValue={selectedService || selectedSolution}
                     style={{ height: 50, width: "100%" }}
                     onValueChange={(itemValue, itemIndex) => handleSelectSolution(itemValue)}>
-                    {/* {picker} */}
                     {test}
                 </Picker>
             </View >
@@ -69,9 +72,6 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         backgroundColor: '#fff',
-        // justifyContent: 'space-around',
-        // alignItems: 'center',
-        // padding: 20
     },
     selectionGroup: {
     },

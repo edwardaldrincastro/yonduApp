@@ -84,7 +84,7 @@ const FeaturesDrawer = createDrawerNavigator({
                                 source={require('../assets/images/yondu_logo.png')} />
                         </ImageBackground>
                     </View>
-                    <View>
+                    <View style={styles.drawerContent}>
                         <DrawerItems {...props} />
                     </View>
                     <View style={styles.footer}>
@@ -123,7 +123,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-
+    drawerContent: {
+        paddingHorizontal: 20
+    },
     header: {
         flex: 1,
         maxHeight: DimensionsHeight * 0.18,
@@ -139,7 +141,8 @@ const styles = StyleSheet.create({
     footerText: {
         fontSize: 16,
         color: "#909191",
-        paddingVertical: 10
+        paddingVertical: 10,
+        paddingHorizontal: 20
     }
 });
 

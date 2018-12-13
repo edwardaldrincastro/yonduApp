@@ -14,8 +14,8 @@ class ButtonCustom extends Component {
     }
     onClick = (name) => {
         Share.share({
-            message: 'BAM: we\'re helping your business with awesome React Native apps',
-            url: 'http://bam.tech',
+            message: 'Share',
+            url: 'http://yondu.com.ph',
             title: 'Wow, did you see that?'
         }, {
                 // Android only:
@@ -41,7 +41,7 @@ class ButtonCustom extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={{ flex: 5 }}>
-                    <Text style={{textAlign: 'center', color: '#fff', fontSize: 18, fontWeight: 'bold' }}>{title}</Text>
+                    <Text style={{textAlign: 'center', color: '#fff', fontSize: 20, fontWeight: 'bold' }}>{title}</Text>
 
                 </View>
 
