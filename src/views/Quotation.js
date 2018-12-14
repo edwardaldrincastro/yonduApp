@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import { TextInputCustom, ButtonCustom, PickerCustom } from "../components"
 import { Back } from "../utilities/icons";
 import { services } from "../utilities/data/data"
@@ -68,11 +68,14 @@ class Quotation extends Component {
         this.arrayHandler(solutionsType)
         console.log('solType', solutionsType);
         console.log('route name:', route)
+        
+        console.log('state', this.props.navigation.state);
         return (
             <View style={styles.container}>
+            <ScrollView>
                 <Formik
                     initialValues={{
-
+                        
                         solution: null,
                         service: null,
                         name: null,
@@ -109,6 +112,7 @@ class Quotation extends Component {
                         return (
 
                             <View style={styles.container}>
+                            
                                 <View style={styles.content}>
                                     <PickerCustom
                                         title="Solutions"
@@ -158,6 +162,7 @@ class Quotation extends Component {
                         )
                     }}
                 </Formik>
+                </ScrollView>
             </View>
         )
     }

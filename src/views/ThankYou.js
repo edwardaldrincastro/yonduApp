@@ -7,6 +7,8 @@ class ThankYou extends Component {
         header: null
     }
     render() {
+        const {title, subtitle, } = this.props
+        console.log('state', this.props.navigation.state);
         return (
             <View style={styles.container}>
                 <View style={styles.content}>

@@ -7,12 +7,12 @@ class Logo extends Component {
     componentDidMount() {
         setTimeout(() => {
             this.props.navigation.navigate('Home')
-        }, 400)
+        }, 600)
     }
     render() {
         return (
             <View style={styles.container}>
-                {/* <TouchableHighlight onPress={() => this.props.navigation.navigate('Home')}> */}
+                <TouchableHighlight onPress={() => this.props.navigation.navigate('Home')}>
                 <View style={styles.logoContainer}>
                     <Image
                         source={require('../assets/images/yondu_logo.png')}
@@ -21,7 +21,7 @@ class Logo extends Component {
                     />
                     {/* <Text>Yondu</Text> */}
                 </View>
-                {/* </TouchableHighlight> */}
+                </TouchableHighlight>
             </View>
         )
     }

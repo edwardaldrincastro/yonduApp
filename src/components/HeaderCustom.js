@@ -33,19 +33,16 @@ class ButtonCustom extends Component {
         return (
 
             <View style={[styles.headerContainer, style]}>
-                {/* <Text style={{ color: '#fff', fontSize: 18 }}>{text}</Text> */}
                 <View style={{ flex: 1 }}>
-
                     <TouchableOpacity onPress={() => this.backHandler(route, navigation)}>
                         <Back white />
                     </TouchableOpacity>
                 </View>
                 <View style={{ flex: 5 }}>
-                    <Text style={{textAlign: 'center', color: '#fff', fontSize: 20, fontWeight: 'bold' }}>{title}</Text>
-
+                    <Text style={{ textAlign: 'center', color: '#fff', fontSize: 20, fontWeight: 'bold' }}>{title}</Text>
                 </View>
 
-                <View style={{ flex: 1 }}>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                     {share ? <TouchableOpacity onPress={() => this.onClick(name)}>
                         <ShareIcon />
                     </TouchableOpacity>
@@ -60,6 +57,7 @@ class ButtonCustom extends Component {
 
 const styles = StyleSheet.create({
     headerContainer: {
+        flex:1,
         width: '100%',
         // justifyContent: 'space-between',
         alignItems: 'center',

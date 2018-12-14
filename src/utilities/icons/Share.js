@@ -5,7 +5,7 @@ export default class Share extends Component {
 
   render() {
     return (
-      <Icon name='ios-share' color='#fff' size={30} style={{padding: 20}}/>
+      <Icon name='ios-share' color='#fff' size={30}/>
     )
   }
 }
